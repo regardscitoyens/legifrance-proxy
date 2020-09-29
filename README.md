@@ -8,6 +8,7 @@ to do the request in a real browser and return the HTML
 
 ```
 pip install -r requirements.txt
+sudo apt install chromium chromium-driver
 ```
 
 ## Usage
