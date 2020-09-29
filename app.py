@@ -12,7 +12,7 @@ SITE_NAME = 'https://www.legifrance.gouv.fr/'
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def proxy(path):
-    # avoid downloading fonts and requests overloading
+    # when testing in browser: avoid downloading fonts and requests overloading
     if path.endswith('.ttf') or path.endswith('.js') or path.endswith('.css') or path.endswith('.png') or path.endswith('.ico'):
         return ''
 
