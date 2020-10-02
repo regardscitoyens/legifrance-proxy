@@ -1,7 +1,7 @@
 import urllib.parse
 import os
 
-from flask import Flask, request as flask_request
+from flask import Flask, request as flask_request, redirect
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -30,7 +30,10 @@ def proxy(path):
         driver.get(url)
         html = driver.page_source
 
+    if driver.current_url != url:
+        return redirect(driver.current_url.replace(SITE_NAME, '/'))
+
     driver.quit()
     return html
 
-app.run(host='0.0.0.0', port=8080)
+app.run(host='0.0.0.0', port=8081)
