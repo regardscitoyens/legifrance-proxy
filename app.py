@@ -30,11 +30,12 @@ def proxy(path):
         driver.get(url)
         html = driver.page_source
 
-    if driver.current_url != url:
-        driver.quit()
-        return redirect(driver.current_url.replace(SITE_NAME, '/'))
-
+    current_url = driver.current_url
     driver.quit()
+
+    if current_url != url:
+        return redirect(current_url.replace(SITE_NAME, '/'))
+
     return html
 
 if __name__ == "__main__":
