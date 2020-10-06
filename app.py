@@ -31,6 +31,7 @@ def proxy(path):
         html = driver.page_source
 
     if driver.current_url != url:
+        driver.quit()
         return redirect(driver.current_url.replace(SITE_NAME, '/'))
 
     driver.quit()
